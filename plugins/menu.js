@@ -2,14 +2,14 @@ let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
 let tags = {
-  'main': 'Main',
+  'main': 'Utama',
   'game': 'Game',
   'xp': 'Exp & Limit',
-  'sticker': 'Sticker',
+  'sticker': 'Stiker',
   'kerang': 'Kerang Ajaib',
   'quotes': 'Quotes',
-  'admi': 'Admin',
-  'group': 'Group',
+  'admin': `Admin ${global.opts['restrict'] ? '' : '(Dinonaktifkan)'}`,
+  'group': 'Grup',
   'premium': 'Premium',
   'internet': 'Internet',
   'anonymous': 'Anonymous Chat',
@@ -21,40 +21,38 @@ let tags = {
   'vote': 'Voting',
   'absen': 'Absen',
   'quran': 'Al Qur\'an',
+  'audio': 'Pengubah Suara',
   'jadibot': 'Jadi Bot',
   'owner': 'Owner',
   'host': 'Host',
   'advanced': 'Advanced',
   'info': 'Info',
-  '': 'No Category',
+  '': 'Tanpa Kategori',
 }
 const defaultMenu = {
   before: `
-╭─「 %me 」
-│ Hai, %name!
+┌─〔 %me 〕
+├ Hai, %name!
 │
-│ Tersisa *%limit Limit*
-│ Role *%role*
-│ Level *%level (%exp / %maxexp)* [%xp4levelup lagi untuk levelup]
-│ %totalexp XP in Total
+├ Tersisa *%limit Limit*
+├ Role *%role*
+├ Level *%level (%exp / %maxexp)* [%xp4levelup]
+├ %totalexp XP secara Total
 │ 
-│ Tanggal: *%week %weton, %date*
-│ Tanggal Islam: *%dateIslamic*
-│ Waktu: *%time*
+├ Tanggal: *%week %weton, %date*
+├ Tanggal Islam: *%dateIslamic*
+├ Waktu: *%time*
 │
-│ Uptime: *%uptime (%muptime)*
-│ Database: %rtotalreg of %totalreg
-│
-│ hello my name is dora, aku kesepian 
-│ dan marilah berteman denganku, , 
-│ ku humble dan toxic,,, dan hobiku ngebot
-│ jhaaa 🙂😜
-│
-╰────
+├ Uptime: *%uptime (%muptime)*
+├ Database: %rtotalreg dari %totalreg
+├ 
+├ Terimakasih ya dora udah menjadi
+├ sahabatku yah (^_^♪)
+└────
 %readmore`.trimStart(),
-  header: '╭─「 %category 」',
-  body: '│ • %cmd %islimit %isPremium',
-  footer: '╰────\n',
+  header: '┌─〔 %category 〕',
+  body: '├ %cmd %islimit %isPremium',
+  footer: '└────\n',
   after: `
 *%npmname@^%version*
 ${'```%npmdesc```'}
@@ -63,9 +61,9 @@ ${'```%npmdesc```'}
 let handler = async (m, { conn, usedPrefix: _p }) => {
   try {
     let package = JSON.parse(await fs.promises.readFile(path.join(__dirname, '../package.json')).catch(_ => '{}'))
-    let { exp, limit, level, role } = global.db.data.users[m.sender]
+    let { exp, limit, level, role, registered } = global.db.data.users[m.sender]
     let { min, xp, max } = levelling.xpRange(level, global.multiplier)
-    let name = conn.getName(m.sender)
+    let name = registered ? global.db.data.users[m.sender].name : conn.getName(m.sender)
     let d = new Date(new Date + 3600000)
     let locale = 'id'
     // d.getTimeZoneOffset()
@@ -121,7 +119,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     let header = conn.menu.header || defaultMenu.header
     let body = conn.menu.body || defaultMenu.body
     let footer = conn.menu.footer || defaultMenu.footer
-    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Powered by https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
+    let after = conn.menu.after || (conn.user.jid == global.conn.user.jid ? '' : `Dipersembahkan oleh https://wa.me/${global.conn.user.jid.split`@`[0]}`) + defaultMenu.after
     let _text = [
       before,
       ...Object.keys(tags).map(tag => {
@@ -150,13 +148,14 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
       exp: exp - min,
       maxexp: xp,
       totalexp: exp,
-      xp4levelup: max - exp,
+      xp4levelup: max - exp <= 0 ? `Siap untuk *${_p}levelup*` : `${max - exp} XP lagi untuk levelup`,
       github: package.homepage ? package.homepage.url || package.homepage : '[unknown github url]',
       level, limit, name, weton, week, date, dateIslamic, time, totalreg, rtotalreg, role,
       readmore: readMore
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
-    conn.reply(m.chat, text.trim(), m)
+    // conn.reply(m.chat, text.trim(), m)
+    await conn.send2Button(m.chat, text.trim(), 'made with ❤️ by ariffb', 'OWNER', '.owner', 'DONASI', '.donasi')
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
