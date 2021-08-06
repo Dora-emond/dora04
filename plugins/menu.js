@@ -155,7 +155,7 @@ let handler = async (m, { conn, usedPrefix: _p }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     // conn.reply(m.chat, text.trim(), m)
-    await conn.send2Button
+    
   } catch (e) {
     conn.reply(m.chat, 'Maaf, menu sedang error', m)
     throw e
