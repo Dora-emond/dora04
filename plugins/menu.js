@@ -45,8 +45,7 @@ const defaultMenu = {
 │ Uptime: *%uptime (%muptime)*
 │ Database: %rtotalreg of %totalreg
 │
-│ jangan lupa follow ig ku yah (X﹏X)↷
-├ https://www.instagram.com/invites/contact/?i=6kzzvwuom07a&utm_content=hwgkqlf
+│ 
 ╰────
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
