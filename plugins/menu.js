@@ -45,8 +45,8 @@ const defaultMenu = {
 │ Uptime: *%uptime (%muptime)*
 │ Database: %rtotalreg of %totalreg
 │
-│ Terimakasih ya dora telah menjadi
-├ sahabatku ⊃ο<*
+│ jangan lupa follow ig ku yah (X﹏X)↷
+├ https://www.instagram.com/invites/contact/?i=6kzzvwuom07a&utm_content=hwgkqlf
 ╰────
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
