@@ -45,7 +45,8 @@ const defaultMenu = {
 │ Uptime: *%uptime (%muptime)*
 │ Database: %rtotalreg of %totalreg
 │
-│ Terimakasih ya dora telah mrnjadi 'sahabatku ⊃ο<*
+│ Terimakasih ya dora telah menjadi
+├ sahabatku ⊃ο<*
 ╰────
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
