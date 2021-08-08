@@ -14,7 +14,7 @@ global.APIKeys = { // APIKey Here
   'https://api.xteam.xyz': 'doraemondnobita123',
   'https://zahirr-web.herokuapp.com': 'zahirgans',
   'https://api.zeks.xyz': 'apivinz',
-  'https://pencarikode.xyz': 'ppais',
+  'https://pencarikode.xyz': 'ppais'
 }
 
 // Sticker WM
