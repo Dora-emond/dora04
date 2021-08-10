@@ -45,8 +45,9 @@ const defaultMenu = {
 │ Uptime: *%uptime (%muptime)*
 │ Database: %rtotalreg of %totalreg
 │
-│ berusahalah patah semangat dan tetaplah 
-| menjadi pecundang, hidup mu adalah kesiasiaan.
+│ Berusahalah Patah Semangat dan 
+│ tetaplah menjadi pecundang, 
+│ hidup mu adalah kesiasiaan.
 ╰────
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
