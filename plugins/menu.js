@@ -48,8 +48,7 @@ const defaultMenu = {
 │ Berusahalah Patah Semangat dan 
 │ tetaplah menjadi pecundang, 
 │ hidup mu adalah kesiasiaan.
-│ join ke grup sayia 👇.
-│ https://chat.whatsapp.com/GAsBQiDO8npB8XpvntKNQJ
+│ 
 ╰────
 %readmore`.trimStart(),
   header: '╭─「 %category 」',
