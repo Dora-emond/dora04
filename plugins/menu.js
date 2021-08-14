@@ -46,8 +46,8 @@ const defaultMenu = {
 │ Database: %rtotalreg of %totalreg
 │
 │ Berusahalah Patah Semangat dan 
-│ tetaplah menjadi pecundang, 
-│ hidup mu adalah kesiasiaan.
+│ Tetaplah Menjadi Pecundang, 
+│ Hidup mu Adalah kesia-siaan.
 │ 
 ╰────
 %readmore`.trimStart(),
