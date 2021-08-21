@@ -1,7 +1,7 @@
 let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
-let handler = get('./src/Logobot.jpg')
+let handler = require('../src/Logobot.jpg')
 let tags = {
   'main': 'Main',
   'game': 'Game',
