@@ -31,7 +31,7 @@ let tags = {
 const defaultMenu = {
   before: `
 ╭─「 %me 」
-│ Hai, %name!
+│ Hai, %name!wew = fs.readFileSync('./src/Logobot.jpg')
 │
 │ Tersisa *%limit Limit*
 │ Role *%role*
