@@ -1,6 +1,7 @@
 let fs = require('fs')
 let path = require('path')
 let levelling = require('../lib/levelling')
+let handler = get('./src/Logobot.jpg')
 let tags = {
   'main': 'Main',
   'game': 'Game',
@@ -31,7 +32,7 @@ let tags = {
 const defaultMenu = {
   before: `
 ╭─「 %me 」
-│ Hai, %name!wew = fs.readFileSync('./src/Logobot.jpg')
+│ Hai, %name!
 │
 │ Tersisa *%limit Limit*
 │ Role *%role*
