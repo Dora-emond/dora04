@@ -1,5 +1,6 @@
 let fs = require('fs')
 let path = require('path')
+let pp = './src/Logobot.jpg'
 let levelling = require('../lib/levelling')
 let tags = {
   'main': 'Main',
